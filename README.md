@@ -1,57 +1,113 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```markdown
+# Web Salon 💇‍♀️💅
 
-Currently, two official plugins are available:
+Sistem manajemen usaha salon kecantikan berbasis web, lengkap dengan fitur layanan, reservasi, antrean, kasir, laporan, dan notifikasi WhatsApp. Dibangun menggunakan **PHP, MySQL, Bootstrap, dan JavaScript**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Fitur Utama
+- ✅ Manajemen layanan & harga
+- ✅ Data karyawan & jadwal kerja
+- ✅ Sistem reservasi & antrean
+- ✅ Kasir & transaksi penjualan
+- ✅ Laporan pendapatan & layanan terlaris
+- ✅ Notifikasi WhatsApp otomatis
+- ✅ Pengaturan informasi usaha
+- ✅ Hak akses admin & staf
 
-## Expanding the ESLint configuration
+## 📋 Persyaratan Sistem
+- PHP ≥ 7.4
+- MySQL / MariaDB
+- Web Server (Apache / Nginx)
+- Composer
+- Ekstensi PHP: `mysqli`, `curl`, `gd`, `mbstring`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Cara Instalasi
+
+### 1. Unduh / Clone Proyek
+```bash
+git clone https://github.com/heruhendri/web-salon.git
+cd web-salon
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 2. Instal Dependensi
+```bash
+composer install
 ```
+
+### 3. Pengaturan Basis Data
+1. Buat database baru di MySQL (misal: `db_salon`)
+2. Impor file `database/db_salon.sql` ke database tersebut
+
+### 4. Konfigurasi Aplikasi
+Buka file `config/config.php`, sesuaikan pengaturan berikut:
+```php
+$db_host = 'localhost';
+$db_user = 'nama_user_database';
+$db_pass = 'password_database';
+$db_name = 'db_salon';
+
+// Pengaturan WhatsApp
+$wa_admin = '628xxxxxxx'; // nomor admin
+$wa_session = 'session_salon';
+```
+
+### 5. Pengaturan Izin Folder
+Pastikan folder berikut bisa ditulis:
+```bash
+chmod -R 777 assets/cache
+chmod -R 777 config/whatsapp
+```
+
+### 6. Akses Aplikasi
+Buka di browser:
+```
+http://localhost/web-salon/
+```
+
+**Akun Default:**
+- Username: `admin`
+- Password: `admin123`
+
+> ⚠️ Segera ubah kata sandi setelah masuk pertama kali!
+
+---
+
+## ⚙️ Konfigurasi Tambahan
+
+### 📲 Pengaturan WhatsApp Bot
+1. Pastikan nomor admin sudah benar di `config.php`
+2. Jalankan pemindaian QR Code:
+```bash
+php lib/whatsapp/start.php
+```
+3. Scan kode QR menggunakan WhatsApp di HP kamu
+
+### 🔄 Update Aplikasi
+```bash
+git pull origin main
+composer update
+```
+
+---
+
+## 🐛 Laporan Masalah
+Jika ada kendala atau fitur baru, silakan buka *Issue* di repositori ini.
+
+## 📄 Lisensi
+Proyek ini bersifat terbuka dan bebas digunakan untuk keperluan pribadi maupun usaha.
+```
+
+---
+
+### 📌 Cara Pasang ke GitHub
+1. Buat file baru bernama `README.md` di folder utama proyek
+2. Salin semua teks di atas ke dalamnya
+3. Simpan, lalu kirim ke GitHub:
+```bash
+git add README.md
+git commit -m "Update README & panduan instalasi"
+git push origin main
+```
+
